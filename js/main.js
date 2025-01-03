@@ -35,16 +35,17 @@ function playGame() {
         if (humanChoice === computerChoice) {
             return "Tie! " + humanChoice + " is the same as " + computerChoice + "!";
         } else if (
-                humanChoice === 'rock' && computerChoice === 'scissors' || 
-                humanChoice === 'scissors' && computerChoice === 'paper' || 
-                humanChoice === 'paper' && computerChoice === 'rock'
+                (humanChoice === 'rock' && computerChoice === 'scissors') || 
+                (humanChoice === 'scissors' && computerChoice === 'paper') || 
+                (humanChoice === 'paper' && computerChoice === 'rock')
             ) {
             humanScore++;
             return "You win! " + humanChoice + " beats " + computerChoice + "! :)";
         } else if (
-                humanChoice === 'paper' && computerChoice === 'scissors' || 
-                humanChoice === 'rock' && computerChoice === 'paper' || 
-                humanChoice === 'scissors' && computerChoice === 'rock') {
+                (humanChoice === 'paper' && computerChoice === 'scissors') || 
+                (humanChoice === 'rock' && computerChoice === 'paper') || 
+                (humanChoice === 'scissors' && computerChoice === 'rock')
+            ) {
             computerScore++;
             return "You lose! " + computerChoice + " beats " + humanChoice + "! :(";
         }
