@@ -19,11 +19,54 @@ function getComputerChoice() {
     return choices[randomNumber];
 }
 
-// Get the user's choice
-function getHumanChoice() {
-    let humanChoice = prompt("Enter rock, paper, or scissors: ");
-    return humanChoice.toLowerCase();
+const rock = document.querySelector("#rockbtn");
+const paper = document.querySelector("#paperbtn");
+const scissors = document.querySelector("#scissorsbtn");
+const choiceBtn = document.querySelector("#choice-buttons");
+
+
+choiceBtn.addEventListener('click', (event) => {
+    const targetId = event.target.id;
+    let humanChoice;
+    let computerChoice = getComputerChoice();
+    if (targetId === "rockbtn") {
+        humanChoice = "rock";
+    } else if (targetId === "paperbtn") {
+        humanChoice = "paper";
+    } else if (targetId === "scissorsbtn") {
+        humanChoice = "scissors";
+    }
+    alert("You chose " + humanChoice + "!");
+    playRound(humanChoice, computerChoice);
+});
+let computerScore = 0;
+let humanScore = 0;
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log("Tie! " + humanChoice + " is the same as " + computerChoice + "!");
+    } else if (
+            (humanChoice === 'rock' && computerChoice === 'scissors') || 
+            (humanChoice === 'scissors' && computerChoice === 'paper') || 
+            (humanChoice === 'paper' && computerChoice === 'rock')
+        ) {
+        humanScore++;
+        console.log("You win, " + humanChoice + " beats " + computerChoice + "! :)");
+    } else if (
+            (humanChoice === 'paper' && computerChoice === 'scissors') || 
+            (humanChoice === 'rock' && computerChoice === 'paper') || 
+            (humanChoice === 'scissors' && computerChoice === 'rock')
+        ) {
+        computerScore++;
+        console.log("You lose, " + computerChoice + " beats " + humanChoice + "! :(");
+    }
+    console.log("Human: " + humanScore + " Computer: " + computerScore);
 }
+
+// Get the user's choice
+// function getHumanChoice() {
+//     let humanChoice = prompt("Enter rock, paper, or scissors: ");
+//     return humanChoice.toLowerCase();
+// }
 
 
 
@@ -69,5 +112,5 @@ function playGame() {
     }
 }
 
-playGame();
+// playGame();
 
