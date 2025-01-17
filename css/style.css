@@ -22,7 +22,11 @@
 /*******************************************/
 
 body {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 
@@ -32,7 +36,10 @@ body {
 header {
 
 }
-
+#results {
+    text-align: center;
+    height: 12rem;    
+}
 footer {
 
 }
@@ -40,3 +47,26 @@ footer {
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+
+button {
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+}
+
+.animated {
+    animation: buttonClick 1s ease-in-out infinite;
+    background-color: green;
+    box-shadow: 0 .5em .5em rgba(0, 0, 0, 0.2);
+}
+
+.fade-out {
+    transition: transform 2s ease-out, background-color 2s ease-out;
+    transform: scale(1);
+    background-color: transparent;
+}
+
+@keyframes buttonClick {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}

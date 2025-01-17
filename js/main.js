@@ -22,11 +22,24 @@ function getComputerChoice() {
 // Pull in choice buttons from DOM
 const choiceBtn = document.querySelector("#choice-buttons");
 
+// Variable to keep track of the last clicked button
+let lastClickedButton = null;
+
 // Add click events to the choice buttons
 choiceBtn.addEventListener('click', (event) => {
     const targetId = event.target.id;
     let humanChoice;
     let computerChoice = getComputerChoice();
+
+    // Remove animation class from the last clickedbutton
+    if (lastClickedButton) {
+        lastClickedButton.classList.remove('animated');
+    }
+
+    // Add animation class to the currently clickedbutton
+    event.target.classList.add('animated');
+    lastClickedButton = event.target;
+
     if (targetId === "rockbtn") {
         humanChoice = "rock";
     } else if (targetId === "paperbtn") {
@@ -78,6 +91,14 @@ function playRound(humanChoice, computerChoice) {
         playAgainPara.textContent = "Make a selection to play again!";
         computerScore = 0;
         humanScore = 0;
+        // Remove animation class from the last clicked button after a delay
+        if (lastClickedButton) {
+            lastClickedButton.classList.add('fade-out');
+            lastClickedButton.classList.remove('animated');
+            setTimeout(() => {
+                lastClickedButton.classList.remove('fade-out');
+            }, 2000);
+        }
     }  
 }
 function checkScore(computerScore, humanScore, winningScore) {
